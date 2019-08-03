@@ -20,6 +20,10 @@ Route::get('/logout', function () {
     auth()->logout();
 });
 
-Auth::routes();
+Route::prefix('admin')->group(function () {
+    Route::resource('series', 'SeriesController');
+});
+
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');

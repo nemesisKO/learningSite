@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFlagToUsers extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,7 @@ class AddFlagToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            Schema::table('users', function ($table) {
-                $table->integer('flag');
-            });
+            $table->integer('flag')->default('11')->change();
         });
     }
 
@@ -28,9 +26,7 @@ class AddFlagToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            Schema::table('users', function ($table) {
-                $table->dropColumn('flag');
-            });
+            $table->integer('flag')->default('11')->change();
         });
     }
 }
