@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 
-use App\Series;
 
-class CreateSeriesRequest extends SeriesRequest
+class UpdateSeriesRequest extends SeriesRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,22 +26,7 @@ class CreateSeriesRequest extends SeriesRequest
         return [
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required'
 
         ];
-    }
-
-
-
-    public function storeSeries()
-    {
-        $series = Series::create([
-            'title' => $this->title,
-            'description' => $this->description,
-            'slug' => str_slug($this->title),
-            'image_url' =>  $this->fileName
-        ]);
-
-        return redirect()->route('series.show', $series->slug);
     }
 }

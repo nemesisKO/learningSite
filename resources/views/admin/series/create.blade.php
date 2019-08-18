@@ -10,7 +10,7 @@
       <div class="col-12 col-lg-8 offset-lg-2">
 
         <h1>Create a bahd series</h1>
-        <p class="fs-20 opacity-70">Let's make the world a better place for coders</p>
+      
 
       </div>
     </div>
@@ -31,10 +31,20 @@
 {{ csrf_field() }}
                 <div class="form-group">
                   <input class="form-control form-control-lg" type="text" name="title" placeholder="Your Series title">
+                  @if ($errors->has('title'))
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $errors->first('title') }}</strong>
+                  </span>
+              @endif
                 </div>
 
                 <div class="form-group">
                   <input class="form-control form-control-lg" type="file" name="image" >
+                  @if ($errors->has('image'))
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $errors->first('image') }}</strong>
+                  </span>
+              @endif
                 </div>
 
                 <div class="form-group">

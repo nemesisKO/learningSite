@@ -12,18 +12,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/redis', function () {
+    Redis::set('kave', 'ko'); 
 });
+Route::get('/', 'FrontendController@welcome');
+// ->middleware('verified')
 
 Route::get('/logout', function () {
     auth()->logout();
+    return redirect('/');
 });
 
-Route::prefix('admin')->group(function () {
-    Route::resource('series', 'SeriesController');
-});
+// Route::get('{series_by_id}', function (\App\Series $series) {
+//     dd($series);
+// });
 
-Auth::routes(['verify' => true]);
+// Route::middleware('admin')->prefix('admin')->group(function () {
+
+// });
+
+Auth::routes();
+// ['verify' => true]
 
 Route::get('/home', 'HomeController@index')->name('home');

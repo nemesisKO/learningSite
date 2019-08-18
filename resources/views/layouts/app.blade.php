@@ -43,14 +43,20 @@
            
                 
                
-                
+                @auth
                 <li class="nav-item">
-                  
+                <a href="{{route('series.create')}}" class="nav-link" >create series</a>
                 </li>
-
+                <li class="nav-item">
+                <a href="{{route('series.index')}}" class="nav-link" >All series</a>
+                </li>
+                @endauth
            
+
             @if(auth()->check())
+            <li class="nav-item">
            salam {{ auth()->user()->name}}
+            </li>
             @else
             <li class="nav-item"><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#loginModal">Login</a></li>
             @endif
@@ -80,11 +86,12 @@
 
 
 
-
+      
     </main>
     <!-- END Main container -->
 
-
+    <vue-noty>
+      </vue-noty>
 
 
    
@@ -98,7 +105,7 @@
           <div class="col-12 col-lg-6">
             <ul class="nav nav-primary nav-hero">
               <li class="nav-item hidden-sm-down">
-                <a class="nav-link" href="/">Bahdcasts</a>
+                <a class="nav-link" href="/">kavehKO</a>
               </li>
             </ul>
           </div>

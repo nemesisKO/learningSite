@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Foundation\Http\FormRequest;
 
-use App\Series;
-
-class CreateSeriesRequest extends SeriesRequest
+class CreateLessonRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,22 +26,8 @@ class CreateSeriesRequest extends SeriesRequest
         return [
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required'
-
+            'episode_number' => 'required',
+            'video_id' => 'required',
         ];
-    }
-
-
-
-    public function storeSeries()
-    {
-        $series = Series::create([
-            'title' => $this->title,
-            'description' => $this->description,
-            'slug' => str_slug($this->title),
-            'image_url' =>  $this->fileName
-        ]);
-
-        return redirect()->route('series.show', $series->slug);
     }
 }
