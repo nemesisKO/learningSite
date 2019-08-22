@@ -27,6 +27,7 @@ window.noty = function(notification) {
 Vue.component('vue-login', require('./components/Login.vue').default);
 Vue.component('vue-lessons', require('./components/Lessons.vue').default);
 Vue.component('vue-noty', require('./components/Noty.vue').default);
+Vue.component('vue-player', require('./components/Player.vue').default);
 // Vue.component('create-lesson', require('./components/children/CreateLesson.vue').default);
 
 /**

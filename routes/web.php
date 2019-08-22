@@ -13,10 +13,19 @@
 */
 
 Route::get('/redis', function () {
-    Redis::set('kave', 'ko'); 
+    // Redis::sadd('user:1:series:18', '89');
+    Redis::del('user:1:series:18');
+    // dd(Redis::smembers('user:1:series:18'));
+    // Redis::set('user', 2);
+    // dd(Redis::get('user'));
 });
+
 Route::get('/', 'FrontendController@welcome');
 // ->middleware('verified')
+Route::get('/series/{series}', 'FrontendController@series')->name('series');
+Route::get('/watch-series/{series}', 'WatchSeriesController@index')->name('series.learning');
+Route::get('/series/{series}/lesson/{lesson}', 'WatchSeriesController@showLesson')->name('series.watch');
+Route::post('/series/complete-lesson/{lesson}', 'WatchSeriesController@completeLesson');
 
 Route::get('/logout', function () {
     auth()->logout();

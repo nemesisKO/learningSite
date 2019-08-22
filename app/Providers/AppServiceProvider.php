@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -24,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::if('hasStartedSeries', function ($series) {
+            return auth()->user()->hasStartedSeries($series);
+        });
         Schema::defaultStringLength(191); //NEW: Increase StringLength
     }
 }

@@ -2,14 +2,16 @@
 
 namespace App;
 
+use App\Entities\Learning;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Redis;
 
 class User extends Authenticatable
 // implements MustVerifyEmail
 {
-    use Notifiable;
+    use Notifiable, Learning;
 
     /**
      * The attributes that are mass assignable.
@@ -43,4 +45,6 @@ class User extends Authenticatable
     {
         return in_array($this->email, config('kaveh.administrators'));
     }
+    /////////////
+
 }

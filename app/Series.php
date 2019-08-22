@@ -24,4 +24,9 @@ class Series extends Model
     {
         return 'slug';
     }
+    public function getOrderedLessons()
+    {
+
+        return ($this->lessons()->orderBy('id', 'asc')->get());
+    }
 }
